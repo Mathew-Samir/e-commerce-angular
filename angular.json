@@ -26,9 +26,8 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss", "./node_modules/flowbite/dist/flowbite.min.css"],
+            "scripts": ["./node_modules/flowbite/dist/flowbite.min.js"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -85,9 +84,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           }
         }
       }

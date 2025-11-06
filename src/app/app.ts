@@ -1,12 +1,18 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { FlowbitService } from './core/services/flowbit/flowbit';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('e-commerce');
+  private flowbiteService = inject(FlowbitService);
+  ngOnInit(): void {
+    this.flowbiteService.loadFlowbite((flowbite) => {
+      console.log('Flowbite loaded', flowbite);
+    });
+  }
 }
