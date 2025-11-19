@@ -1,3 +1,4 @@
+import { NotFound } from './feature/layout/not-found/not-found';
 import { Routes } from '@angular/router';
 import { Home } from './feature/pages/home/home';
 import { Cart } from './feature/pages/cart/cart';
@@ -12,4 +13,5 @@ export const routes: Routes = [
   { path: 'categories', component: Categories },
   { path: 'brands', component: Brands },
   { path: 'products', component: Products },
+  { path: '**', component: NotFound },
 ];
