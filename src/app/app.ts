@@ -1,9 +1,12 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FlowbitService } from './core/services/flowbit/flowbit';
+import { Navbar } from './feature/layout/navbar/navbar';
+import { RouterOutlet } from '@angular/router';
+import { Footer } from './feature/layout/footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [],
+  imports: [Navbar, RouterOutlet, Footer],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
