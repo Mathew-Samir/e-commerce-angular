@@ -1,10 +1,10 @@
-import { NotFound } from './feature/layout/not-found/not-found';
+import { NotFound } from './layout/not-found/not-found';
 import { Routes } from '@angular/router';
-import { Home } from './feature/pages/home/home';
-import { Cart } from './feature/pages/cart/cart';
-import { Categories } from './feature/pages/categories/categories';
-import { Brands } from './feature/pages/brands/brands';
-import { Products } from './feature/pages/products/products';
+import { Home } from './feature/home/home';
+import { Cart } from './feature/cart/cart';
+import { Categories } from './feature/categories/categories';
+import { Brands } from './feature/brands/brands';
+import { Products } from './feature/products/products';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
