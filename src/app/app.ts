@@ -1,8 +1,8 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { FlowbitService } from './core/services/flowbit/flowbit';
-import { Navbar } from './feature/layout/navbar/navbar';
+import { Navbar } from './layout/navbar/navbar';
 import { RouterOutlet } from '@angular/router';
-import { Footer } from './feature/layout/footer/footer';
+import { Footer } from './layout/footer/footer';
 
 @Component({
   selector: 'app-root',
