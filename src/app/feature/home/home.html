@@ -1,12 +1,19 @@
 <p>home works!</p>
-<app-buttons label="Save" bgColor="#1e90ff" textColor="#fff" size="lg"></app-buttons>
-<app-buttons label="Delete" bgColor="#e53e3e" textColor="#fff" size="sm"></app-buttons>
+<app-buttons
+  label="Save"
+  bgColor="#1e90ff"
+  textColor="#fff"
+  size="lg"
+  [isLoading]="isLoading()"
+  (clicked)="submit()"
+></app-buttons>
+
 <app-buttons
   label="Delete"
   bgColor="#e53e3e"
   textColor="#fff"
-  size="md"
+  size="sm"
   [disabled]="true"
-  [isLoading]="isLoading()"
-  (onClick)="submit()"
 ></app-buttons>
+
+<app-buttons label="Delete" bgColor="#e53e3e" textColor="#000" size="md"></app-buttons>

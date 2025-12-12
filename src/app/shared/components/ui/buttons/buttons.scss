@@ -5,6 +5,7 @@
   padding: 0.2rem 1rem;
   margin: 0.2rem 0.3rem;
   transition: all 0.2s;
+  min-width: 5rem;
   cursor: pointer;
 
   &:hover:not(:disabled) {
@@ -15,4 +16,17 @@
     opacity: 0.5;
     cursor: not-allowed;
   }
+}
+
+.loading-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 2px 0;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
 }
