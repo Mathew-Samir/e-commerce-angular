@@ -1,9 +1,11 @@
 .btn {
   border: none;
-  border-radius: 8px;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 400;
+  padding: 0.2rem 1rem;
+  margin: 0.2rem 0.3rem;
   transition: all 0.2s;
+  min-width: 5rem;
   cursor: pointer;
 
   &:hover:not(:disabled) {
@@ -14,4 +16,17 @@
     opacity: 0.5;
     cursor: not-allowed;
   }
+}
+
+.loading-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 2px 0;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
 }
