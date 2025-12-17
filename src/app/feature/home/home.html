@@ -15,9 +15,8 @@
 </div>
 
 <app-input
-  type="password"
   [(value)]="email"
-  placeholder="Test"
+  placeholder="Email"
   label="Email"
   icon="fa fa-envelope"
   [required]="true"
@@ -25,10 +24,10 @@
   [error]="emailError"
   (blur)="emailTouched = true"
   inputClass="
+    before:!hidden after:!hidden
     block w-100 rounded-sm
     border border-gray-300
     bg-gray-50 p-1.5 m-1.5
-    pl-10
     focus:border-blue-500 focus:ring-blue-500
   "
   labelClass="block mb-1 text-sm font-medium text-gray-900"

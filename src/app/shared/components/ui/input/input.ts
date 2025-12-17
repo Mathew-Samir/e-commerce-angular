@@ -8,7 +8,9 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class InputComponent {
   // Basic
-  @Input() type = '';
+  @Input() type: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search' = 'text';
+  // @Input() type = '';
+  // @Input() id = '';
   @Input() value = '';
   @Input() placeholder = '';
   @Input() disabled = false;
