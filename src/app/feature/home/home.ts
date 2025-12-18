@@ -22,6 +22,12 @@ export class Home {
     return '';
   }
 
+  // get passwordError() {
+  //   if (!this.email) return 'Password is required';
+  //   if (!this.email.includes('@')) return 'Invalid email';
+  //   return '';
+  // }
+
   submit() {
     this.isLoading.set(true);
   }
