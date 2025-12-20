@@ -15,6 +15,27 @@
 </div>
 
 <app-input
+  type="password"
+  [(value)]="password"
+  placeholder="password"
+  label="password"
+  icon="fa fa-envelope"
+  [required]="true"
+  [touched]="emailTouched"
+  [error]="passwordError"
+  (blur)="emailTouched = true"
+  inputClass="
+    block w-100 rounded-sm
+    border border-gray-300
+    bg-gray-50 p-1.5 m-1.5
+    focus:border-blue-500 focus:ring-blue-500
+  "
+  labelClass="block mb-1 text-sm font-medium text-gray-900"
+  errorClass="mt-1 text-sm text-red-600"
+/>
+
+<app-input
+  type="email"
   [(value)]="email"
   placeholder="Email"
   label="Email"
@@ -24,7 +45,6 @@
   [error]="emailError"
   (blur)="emailTouched = true"
   inputClass="
-    before:!hidden after:!hidden
     block w-100 rounded-sm
     border border-gray-300
     bg-gray-50 p-1.5 m-1.5

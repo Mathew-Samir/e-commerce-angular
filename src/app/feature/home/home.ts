@@ -22,6 +22,12 @@ export class Home {
     return '';
   }
 
+  get passwordError() {
+    if (!this.password) return 'Password is required';
+    if (this.password.length < 6) return 'Password must be at least 6 characters';
+    return '';
+  }
+
   submit() {
     this.isLoading.set(true);
   }

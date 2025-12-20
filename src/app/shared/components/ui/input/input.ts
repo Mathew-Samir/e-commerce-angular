@@ -22,6 +22,7 @@ export class InputComponent {
 
   // Validation
   @Input() error = '';
+  @Input() success = '';
   @Input() touched = false;
 
   // Styling
