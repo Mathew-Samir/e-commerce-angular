@@ -22,10 +22,9 @@
   icon="fa fa-envelope"
   [required]="true"
   [touched]="emailTouched"
-  [error]="emailError"
+  [error]="passwordError"
   (blur)="emailTouched = true"
   inputClass="
-    before:!hidden after:!hidden
     block w-100 rounded-sm
     border border-gray-300
     bg-gray-50 p-1.5 m-1.5
@@ -46,7 +45,6 @@
   [error]="emailError"
   (blur)="emailTouched = true"
   inputClass="
-    before:!hidden after:!hidden
     block w-100 rounded-sm
     border border-gray-300
     bg-gray-50 p-1.5 m-1.5
