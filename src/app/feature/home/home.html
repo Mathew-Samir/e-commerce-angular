@@ -1,1 +1,55 @@
 <p>home works!</p>
+<div class="" style="display: flex">
+  <app-buttons
+    label="Save"
+    bgColor="#1e90ff"
+    textColor="#fff"
+    size="lg"
+    [isLoading]="isLoading()"
+    (clicked)="submit()"
+  />
+
+  <app-buttons label="Delete" bgColor="#e53e3e" textColor="#fff" size="sm" [disabled]="true" />
+
+  <app-buttons label="Delete" bgColor="#e53e3e" textColor="#000" size="md" />
+</div>
+
+<app-input
+  type="password"
+  [(value)]="password"
+  placeholder="password"
+  label="password"
+  icon="fa fa-envelope"
+  [required]="true"
+  [touched]="emailTouched"
+  [error]="passwordError"
+  (blur)="emailTouched = true"
+  inputClass="
+    block w-100 rounded-sm
+    border border-gray-300
+    bg-gray-50 p-1.5 m-1.5
+    focus:border-blue-500 focus:ring-blue-500
+  "
+  labelClass="block mb-1 text-sm font-medium text-gray-900"
+  errorClass="mt-1 text-sm text-red-600"
+/>
+
+<app-input
+  type="email"
+  [(value)]="email"
+  placeholder="Email"
+  label="Email"
+  icon="fa fa-envelope"
+  [required]="true"
+  [touched]="emailTouched"
+  [error]="emailError"
+  (blur)="emailTouched = true"
+  inputClass="
+    block w-100 rounded-sm
+    border border-gray-300
+    bg-gray-50 p-1.5 m-1.5
+    focus:border-blue-500 focus:ring-blue-500
+  "
+  labelClass="block mb-1 text-sm font-medium text-gray-900"
+  errorClass="mt-1 text-sm text-red-600"
+/>

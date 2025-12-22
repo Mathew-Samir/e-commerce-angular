@@ -1,3 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
 @use 'tailwindcss';
+// @use 'base';
+// @use 'components';
+// @use 'utilities';
 @use 'flowbite/src/themes/default';
+
+// [type='text'],
+// [type='email'],
+// [type='url'],
+// [type='password'],
+// [type='number'],
+// [type='date'],
+// [type='datetime-local'],
+// [type='month'],
+// [type='search'],
+// [type='tel'],
+// [type='time'],
+// [type='week'],
+// [multiple],
+// textarea,
+// select {
+//   appearance: none;
+//   border-color: var(--color-gray-500);
+//   --tw-shadow: 0 0 #0000;
+//   background-color: #fff;
+//   border-width: 1px;
+//   border-radius: 0;
+//   padding: 0.5rem 0.75rem;
+//   font-size: 1rem;
+//   line-height: 1.5rem;
+// }
