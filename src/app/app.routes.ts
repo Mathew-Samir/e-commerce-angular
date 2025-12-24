@@ -1,48 +1,64 @@
-import { NotFound } from './layout/not-found/not-found';
 import { Routes } from '@angular/router';
-import { Home } from './feature/home/home';
-import { Cart } from './feature/cart/cart';
-import { Categories } from './feature/categories/categories';
-import { Brands } from './feature/brands/brands';
-import { Products } from './feature/products/products';
-import { Auth } from './layout/auth/auth';
-import { Dashboard } from './layout/dashboard/dashboard';
-import { Signup } from './layout/auth/components/signup/signup';
-import { Login } from './layout/auth/components/login/login';
-import { ResetPassword } from './layout/auth/components/reset-password/reset-password';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
     path: 'dashboard',
-    component: Dashboard,
+    loadComponent: () => import('./layout/dashboard/dashboard').then(m => m.Dashboard),
     children: [
       {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full',
       },
-      { path: 'home', component: Home },
-      { path: 'cart', component: Cart },
-      { path: 'categories', component: Categories },
-      { path: 'brands', component: Brands },
-      { path: 'products', component: Products },
+      {
+        path: 'home',
+        loadComponent: () => import('./feature/home/home').then(m => m.Home)
+      },
+      {
+        path: 'cart',
+        loadComponent: () => import('./feature/cart/cart').then(m => m.Cart)
+      },
+      {
+        path: 'categories',
+        loadComponent: () => import('./feature/categories/categories').then(m => m.Categories)
+      },
+      {
+        path: 'brands',
+        loadComponent: () => import('./feature/brands/brands').then(m => m.Brands)
+      },
+      {
+        path: 'products',
+        loadComponent: () => import('./feature/products/products').then(m => m.Products)
+      },
     ],
   },
 
   {
     path: 'auth',
-    component: Auth,
+    loadComponent: () => import('./layout/auth/auth').then(m => m.Auth),
     children: [
       {
         path: '',
         redirectTo: 'login',
         pathMatch: 'full',
       },
-      { path: 'login', component: Login },
-      { path: 'signup', component: Signup },
-      { path: 'reset-password', component: ResetPassword },
+      {
+        path: 'login',
+        loadComponent: () => import('./layout/auth/components/login/login').then(m => m.Login)
+      },
+      {
+        path: 'signup',
+        loadComponent: () => import('./layout/auth/components/signup/signup').then(m => m.Signup)
+      },
+      {
+        path: 'reset-password',
+        loadComponent: () => import('./layout/auth/components/reset-password/reset-password').then(m => m.ResetPassword)
+      },
     ],
   },
-  { path: '**', component: NotFound },
+  {
+    path: '**',
+    loadComponent: () => import('./layout/not-found/not-found').then(m => m.NotFound)
+  },
 ];
