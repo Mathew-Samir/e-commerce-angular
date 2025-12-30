@@ -1,101 +1,70 @@
-<form>
-  <h1>Register Now:</h1>
+<form [formGroup]="registrForm" (ngSubmit)="onSubmit()">
+  <h1 class="text-2xl font-bold mb-6">Register Now:</h1>
+
+  <!-- Name -->
+
+  <!-- inputClass=""
+    labelClass=""
+    errorClass="" -->
   <app-input
     type="text"
-    [(value)]="name"
+    formControlName="name"
     placeholder="Enter Name"
     label="Name"
     icon="fa fa-user"
     [required]="true"
-    [touched]="emailTouched"
-    [error]="nameError"
-    (blur)="emailTouched = true"
-    inputClass="
-      block w-[100%] rounded-sm
-      border border-gray-300
-      bg-white p-1.5 m-1.5 ml-0
-      focus:border-green-500 focus:ring-green-500
-    "
-    labelClass="block mb-1 text-sm font-medium text-gray-600"
-    errorClass="mt-1 text-sm text-red-600"
   />
+
+  <!-- Email -->
   <app-input
     type="email"
-    [(value)]="email"
+    formControlName="email"
     placeholder="Enter Email"
     label="Email"
     icon="fa fa-envelope"
     [required]="true"
-    [touched]="emailTouched"
-    [error]="emailError"
-    (blur)="emailTouched = true"
-    inputClass="
-      block w-[100%] rounded-sm
-      border border-gray-300
-      bg-white p-1.5 m-1.5 ml-0
-      focus:border-green-500 focus:ring-green-500
-    "
-    labelClass="block mb-1 text-sm font-medium text-gray-600"
-    errorClass="mt-1 text-sm text-red-600"
   />
-  <app-input
-    type="password"
-    [(value)]="password"
-    placeholder="Enter password"
-    label="password"
-    icon="fa fa-lock"
-    [required]="true"
-    [touched]="emailTouched"
-    [error]="passwordError"
-    (blur)="emailTouched = true"
-    inputClass="
-      block w-[100%] rounded-sm
-      border border-gray-300
-      bg-white p-1.5 m-1.5 ml-0
-      focus:border-green-500 focus:ring-green-500
-    "
-    labelClass="block mb-1 text-sm font-medium text-gray-600"
-    errorClass="mt-1 text-sm text-red-600"
-  />
-  <app-input
-    type="password"
-    [(value)]="rePassword"
-    placeholder="rePassword"
-    label="rePassword"
-    icon="fa fa-lock"
-    [required]="true"
-    [touched]="emailTouched"
-    [error]="rePasswordError"
-    (blur)="emailTouched = true"
-    inputClass="
-      block w-[100%] rounded-sm
-      border border-gray-300
-      bg-white p-1.5 m-1.5 ml-0
-      focus:border-green-500 focus:ring-green-500
-    "
-    labelClass="block mb-1 text-sm font-medium text-gray-600"
-    errorClass="mt-1 text-sm text-red-600"
-  />
+
+  <!-- Phone -->
   <app-input
     type="tel"
-    [(value)]="phone"
+    formControlName="phone"
     placeholder="Enter Phone"
     label="Phone"
     icon="fa fa-phone"
     [required]="true"
-    [touched]="emailTouched"
-    [error]="phoneError"
-    (blur)="emailTouched = true"
-    inputClass="
-      block w-[100%] rounded-sm
-      border border-gray-300
-      bg-white p-1.5 m-1.5 ml-0
-      focus:border-green-500 focus:ring-green-500
-    "
-    labelClass="block mb-1 text-sm font-medium text-gray-600"
-    errorClass="mt-1 text-sm text-red-600"
   />
-  <div class="flex justify-end">
-    <app-buttons label="Register" bgColor="#008236" textColor="#fff" size="md" [disabled]="true" />
+
+
+  <!-- Password -->
+  <app-input
+    type="password"
+    formControlName="password"
+    placeholder="Enter password"
+    label="password"
+    icon="fa fa-lock"
+    [required]="true"
+  />
+
+  <!-- Confirm Password -->
+  <app-input
+    type="password"
+    formControlName="rePassword"
+    placeholder="Confirm password"
+    label="Confirm Password"
+    icon="fa fa-lock"
+    [required]="true"
+  />
+
+
+  <div class="flex justify-end mt-6">
+    <app-buttons
+      label="Register"
+      bgColor="#008236"
+      textColor="#fff"
+      size="md"
+      [disabled]="!registrForm.valid"
+      type="submit"
+    />
   </div>
 </form>
