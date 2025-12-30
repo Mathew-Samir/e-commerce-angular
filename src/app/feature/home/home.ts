@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { Buttons } from '../../shared/components/ui/buttons/buttons';
-import { InputComponent } from '../../shared/components/ui/input/input';
 
 @Component({
   selector: 'app-home',
-  imports: [Buttons, InputComponent],
+  imports: [Buttons, ],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

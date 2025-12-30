@@ -1,1 +1,70 @@
-<p>signup works!</p>
+<form [formGroup]="registrForm" (ngSubmit)="onSubmit()">
+  <h1 class="text-2xl font-bold mb-6">Register Now:</h1>
+
+  <!-- Name -->
+
+  <!-- inputClass=""
+    labelClass=""
+    errorClass="" -->
+  <app-input
+    type="text"
+    formControlName="name"
+    placeholder="Enter Name"
+    label="Name"
+    icon="fa fa-user"
+    [required]="true"
+  />
+
+  <!-- Email -->
+  <app-input
+    type="email"
+    formControlName="email"
+    placeholder="Enter Email"
+    label="Email"
+    icon="fa fa-envelope"
+    [required]="true"
+  />
+
+  <!-- Phone -->
+  <app-input
+    type="tel"
+    formControlName="phone"
+    placeholder="Enter Phone"
+    label="Phone"
+    icon="fa fa-phone"
+    [required]="true"
+  />
+
+
+  <!-- Password -->
+  <app-input
+    type="password"
+    formControlName="password"
+    placeholder="Enter password"
+    label="password"
+    icon="fa fa-lock"
+    [required]="true"
+  />
+
+  <!-- Confirm Password -->
+  <app-input
+    type="password"
+    formControlName="rePassword"
+    placeholder="Confirm password"
+    label="Confirm Password"
+    icon="fa fa-lock"
+    [required]="true"
+  />
+
+
+  <div class="flex justify-end mt-6">
+    <app-buttons
+      label="Register"
+      bgColor="#008236"
+      textColor="#fff"
+      size="md"
+      [disabled]="!registrForm.valid"
+      type="submit"
+    />
+  </div>
+</form>
