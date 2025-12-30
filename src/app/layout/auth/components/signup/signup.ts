@@ -15,11 +15,20 @@ export class Signup implements OnInit {
 
   constructor() {
     this.registrForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      name: new FormControl('', [
+        Validators.required,
+        this.nameValidator.bind(this)
+      ]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+      password: new FormControl('', [
+        Validators.required,
+        this.passwordValidator.bind(this)
+      ]),
       rePassword: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10,15}$')]),
+      phone: new FormControl('', [
+        Validators.required,
+        this.phoneValidator.bind(this)
+      ]),
     }, { validators: this.passwordMatchValidator });
   }
 
@@ -28,6 +37,52 @@ export class Signup implements OnInit {
     this.registrForm.valueChanges.subscribe(values => {
       console.log('Form values:', values);
     });
+  }
+
+  // Validator: Name must contain both uppercase and lowercase letters
+  private nameValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const value = control.value;
+    if (!value) return null;
+
+    const hasUpperCase = /[A-Z]/.test(value);
+    const hasLowerCase = /[a-z]/.test(value);
+    const onlyLetters = /^[a-zA-Z\s]+$/.test(value);
+
+    if (!onlyLetters) {
+      return { invalidName: true };
+    }
+    if (!hasUpperCase || !hasLowerCase) {
+      return { nameMixedCase: true };
+    }
+    return null;
+  }
+
+  // Validator: Password must contain uppercase, lowercase, numbers, and symbols
+  private passwordValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const value = control.value;
+    if (!value) return null;
+
+    const hasUpperCase = /[A-Z]/.test(value);
+    const hasLowerCase = /[a-z]/.test(value);
+    const hasNumber = /[0-9]/.test(value);
+    const hasSymbol = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value);
+
+    if (!hasUpperCase || !hasLowerCase || !hasNumber || !hasSymbol) {
+      return { weakPassword: true };
+    }
+    return null;
+  }
+
+  // Validator: Phone must be exactly 11 digits
+  private phoneValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const value = control.value;
+    if (!value) return null;
+
+    const isValid = /^[0-9]{11}$/.test(value);
+    if (!isValid) {
+      return { invalidPhone: true };
+    }
+    return null;
   }
 
   // Custom validator to check if passwords match
@@ -43,7 +98,6 @@ export class Signup implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.registrForm.value);
     if (this.registrForm.valid) {
       // Mark all controls as touched to trigger validation display
       this.markFormGroupTouched(this.registrForm);

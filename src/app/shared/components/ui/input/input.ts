@@ -1,5 +1,5 @@
-import {Component, EventEmitter,Input,Output,Optional,Self,DoCheck} from '@angular/core';
-import {ControlValueAccessor,NgControl,ReactiveFormsModule} from '@angular/forms';
+import { Component, EventEmitter, Input, Output, Optional, Self, DoCheck } from '@angular/core';
+import { ControlValueAccessor, NgControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -19,6 +19,9 @@ export class InputComponent implements ControlValueAccessor, DoCheck {
   @Input() icon?: string;
   @Input() required = false;
 
+  // Password toggle
+  @Input() showPasswordToggle = true;
+
   // For Reactive Forms
   @Input() formControlName?: string;
 
@@ -27,6 +30,7 @@ export class InputComponent implements ControlValueAccessor, DoCheck {
   @Input() labelClass = "block mb-1 text-sm font-medium text-gray-600";
   @Input() errorClass = "mt-1 text-sm text-red-600";
   @Input() wrapperClass = "";
+  @Input() toggleButtonClass = "absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer text-gray-500 hover:text-gray-700";
 
   // Events
   @Output() blur = new EventEmitter<void>();
@@ -36,6 +40,7 @@ export class InputComponent implements ControlValueAccessor, DoCheck {
   touched = false;
   error = '';
   @Input() success = '';
+  showPassword = false;
 
   // ControlValueAccessor callbacks
   private onChange: (value: string) => void = () => {};
@@ -78,6 +83,26 @@ export class InputComponent implements ControlValueAccessor, DoCheck {
     return 'Invalid value';
   }
 
+  // Toggle password visibility
+  togglePasswordVisibility(): void {
+    if (this.type === 'password' && this.showPasswordToggle) {
+      this.showPassword = !this.showPassword;
+    }
+  }
+
+  // Get current input type (accounts for password toggle)
+  get currentInputType(): string {
+    if (this.type === 'password' && this.showPasswordToggle && this.showPassword) {
+      return 'text';
+    }
+    return this.type;
+  }
+
+  // Get eye icon based on visibility state
+  get eyeIcon(): string {
+    return this.showPassword ? 'fas fa-eye' : 'fas fa-eye-slash';
+  }
+
   // ControlValueAccessor implementation
   writeValue(value: string): void {
     this.value = value || '';
@@ -110,5 +135,10 @@ export class InputComponent implements ControlValueAccessor, DoCheck {
   // Helper to check if control has error
   get hasError(): boolean {
     return !!(this.error && this.touched);
+  }
+
+  // Check if password toggle should be shown
+  get shouldShowPasswordToggle(): boolean {
+    return this.type === 'password' && this.showPasswordToggle;
   }
 }
