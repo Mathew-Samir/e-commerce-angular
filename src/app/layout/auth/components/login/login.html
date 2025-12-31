@@ -1,1 +1,34 @@
-<p>login works!</p>
+<form [formGroup]="registrForm" (ngSubmit)="onSubmit()">
+  <h1 class="text-2xl font-bold mb-6">Register Now:</h1>
+
+  <!-- Email -->
+  <app-input
+    type="email"
+    formControlName="email"
+    placeholder="Enter Email"
+    label="Email"
+    icon="fa fa-envelope"
+    [required]="true"
+  />
+
+  <!-- Password -->
+  <app-input
+    type="password"
+    formControlName="password"
+    placeholder="Enter password"
+    label="password"
+    icon="fa fa-lock"
+    [required]="true"
+  />
+
+  <div class="flex justify-end mt-6">
+    <app-buttons
+      label="Login"
+      bgColor="#008236"
+      textColor="#fff"
+      size="md"
+      [disabled]="!registrForm.valid"
+      type="submit"
+    />
+  </div>
+</form>
