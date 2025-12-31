@@ -26,7 +26,7 @@ export class InputComponent implements ControlValueAccessor, DoCheck {
   @Input() formControlName?: string;
 
   // Styling
-  @Input() inputClass = "block w-[100%] rounded-sm border border-gray-300 bg-white p-1.5 m-1.5 ml-0 focus:border-green-500 focus:ring-green-500 disabled:bg-gray-100 disabled:cursor-not-allowed transition-colors duration-200";
+  @Input() inputClass = "block w-[100%] rounded-sm border border-gray-300 bg-white p-1.5 m-1.5 ml-0 focus:border-green-500 focus:ring-green-500 disabled:bg-gray-100 disabled:cursor-not-allowed transition-colors duration-200 outline-none focus:outline-none";
   @Input() labelClass = "block mb-1 text-sm font-medium text-gray-600";
   @Input() errorClass = "mt-1 text-sm text-red-600";
   @Input() wrapperClass = "";
