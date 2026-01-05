@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../../../../shared/components/ui/input/input';
 import { Buttons } from '../../../../shared/components/ui/buttons/buttons';
+import { Auth } from '../../../../core/services/auth/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -12,6 +14,10 @@ import { Buttons } from '../../../../shared/components/ui/buttons/buttons';
 })
 export class Signup implements OnInit {
   registrForm: FormGroup;
+  private authService = inject(Auth);
+  private router = inject(Router);
+  isLoading = signal<boolean>(false);
+  errorMessage = '';
 
   constructor() {
     this.registrForm = new FormGroup({
@@ -103,8 +109,19 @@ export class Signup implements OnInit {
       this.markFormGroupTouched(this.registrForm);
 
       // Submit form data
-      console.log('Form submitted:', this.registrForm.value);
-      // Add your form submission logic here
+      this.isLoading.set(true);
+      this.authService.sendRegisterToAPI(this.registrForm.value).subscribe({
+        next: (res) => {
+          this.isLoading.set(false);
+          console.log('Registration success:', res);
+          this.router.navigate(['/auth/login']);
+        },
+        error: (err) => {
+          this.isLoading.set(false);
+          this.errorMessage = err.error.message || 'Registration failed';
+          console.error('Registration error:', err);
+        }
+      });
     } else {
       // Mark all controls as touched to show validation errors
       this.markFormGroupTouched(this.registrForm);
