@@ -1,34 +1,22 @@
-<form [formGroup]="registrForm" (ngSubmit)="onSubmit()">
-  <h1 class="text-2xl font-bold mb-6">Register Now:</h1>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <h1 class="text-2xl font-bold mb-6">Login Now:</h1>
+
+  @if (errorMessage()) {
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+      <span class="block sm:inline">{{ errorMessage() }}</span>
+    </div>
+  }
 
   <!-- Email -->
-  <app-input
-    type="email"
-    formControlName="email"
-    placeholder="Enter Email"
-    label="Email"
-    icon="fa fa-envelope"
-    [required]="true"
-  />
+  <app-input type="email" formControlName="email" placeholder="Enter Email" label="Email" icon="fa fa-envelope"
+    [required]="true" />
 
   <!-- Password -->
-  <app-input
-    type="password"
-    formControlName="password"
-    placeholder="Enter password"
-    label="password"
-    icon="fa fa-lock"
-    [required]="true"
-  />
+  <app-input type="password" formControlName="password" placeholder="Enter password" label="password" icon="fa fa-lock"
+    [required]="true" />
 
   <div class="flex justify-end mt-6">
-    <app-buttons
-      label="Login"
-      bgColor="#008236"
-      textColor="#fff"
-      size="md"
-      [disabled]="!registrForm.valid"
-      type="submit"
-    />
+    <app-buttons [isLoading]="isLoading()" bgColor="#008236" textColor="#fff" size="md" [disabled]="!loginForm.valid || isLoading()"
+      type="submit" />
   </div>
 </form>
