@@ -5,6 +5,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Auth } from '../../../../core/services/auth/auth';
 import { Router } from '@angular/router';
 import { AuthResponse } from '../../../../core/interface/auth.interface';
+import { CustomValidators } from '../../../../core/validators/custom-validators';
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,10 @@ export class Login implements OnInit {
   constructor() {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        CustomValidators.passwordValidator
+      ]),
     });
   }
 
